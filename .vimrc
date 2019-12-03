@@ -395,11 +395,17 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'airblade/vim-gitgutter'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'Rigellute/shades-of-purple.vim'
+    " Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'luochen1990/rainbow'
     Plug 'w0rp/ale'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'rhysd/vim-clang-format'
     Plug 'Yggdroot/LeaderF' 
+    Plug 'jremmen/vim-ripgrep'
 call plug#end()
+
+" Bracket rainbow
+let g:rainbow_active = 1
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -423,6 +429,13 @@ endif
 """" enable the theme
 syntax enable
 colorscheme shades_of_purple
+let g:shades_of_purple_airline = 1
+let g:airline_theme = "shades_of_purple"
+let g:shades_of_purple_lightline = 1
+let g:lightline = { "colorscheme": "shades_of_purple" }
+
+" colorscheme palenight
+" let g:airline_theme = "palenight"
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
@@ -471,9 +484,22 @@ let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
+" search word under cursor, the pattern is treated as regex, and enter normal mode directly
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+
+" search word under cursor, the pattern is treated as regex,
+" append the result to previous search results.
+noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"))<CR>
+
+" tmux
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
+
+" nnoremap <C-a> <Home>
+" nnoremap <C-e> <End>
+" inoremap <C-a> <Home>
+" inoremap <C-e> <End>
