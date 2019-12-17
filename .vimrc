@@ -390,7 +390,6 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'flazz/vim-colorschemes'
-    Plug 'valloric/youcompleteme', { 'do': './install.py --clang-completer --rust-completer' }
     Plug 'rust-lang/rust.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'ludovicchabant/vim-gutentags'
@@ -400,9 +399,19 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'w0rp/ale'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'rhysd/vim-clang-format'
-    Plug 'Yggdroot/LeaderF' 
+    Plug 'Yggdroot/LeaderF'
     Plug 'jremmen/vim-ripgrep'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Bracket rainbow
 let g:rainbow_active = 1
@@ -439,7 +448,7 @@ let g:airline_theme='random'
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1  
+let g:airline_powerline_fonts = 1
 
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.vscode', '.git', '.root', 'abtor.xml']
@@ -462,9 +471,6 @@ map <F2> :NERDTreeToggle<CR>
 
 " ctags
 set tags=./.tags;,.tags
-
-" YCM
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 " LeaderF
 let g:Lf_ShortcutF = '<c-p>'
