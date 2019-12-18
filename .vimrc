@@ -315,6 +315,12 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+" Use the "black hole register", "_ to really delete something
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+" Paste something and keep it available for further pasting.
+xnoremap <leader>p "_dP
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -415,6 +421,9 @@ let g:deoplete#enable_at_startup = 1
 
 " Bracket rainbow
 let g:rainbow_active = 1
+let g:rainbow_conf = {
+\    'guifgs': ['cyan1', 'orange1', 'yellow1', 'magenta1'],
+\}
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
