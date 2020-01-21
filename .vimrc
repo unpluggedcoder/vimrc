@@ -141,10 +141,10 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-try
-    colorscheme desert
-catch
-endtry
+" try
+"     colorscheme desert
+" catch
+" endtry
 
 set background=dark
 
@@ -395,12 +395,16 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    " Color scheme
     Plug 'flazz/vim-colorschemes'
+    Plug 'Rigellute/shades-of-purple.vim'
+    Plug 'balanceiskey/vim-framer-syntax'
+    Plug 'evturn/vim-hardaway'
+    " Plug 'drewtempelmeyer/palenight.vim'
+
     Plug 'rust-lang/rust.vim'
     Plug 'airblade/vim-gitgutter'
     Plug 'ludovicchabant/vim-gutentags'
-    Plug 'Rigellute/shades-of-purple.vim'
-    " Plug 'drewtempelmeyer/palenight.vim'
     Plug 'luochen1990/rainbow'
     Plug 'w0rp/ale'
     Plug 'octol/vim-cpp-enhanced-highlight'
@@ -440,15 +444,26 @@ let g:cpp_no_function_highlight = 1
 
 """" enable 24bit true color
 " If you have vim >=8.0 or Neovim >= 0.1.5
-if (has("termguicolors"))
+if has('nvim') || has("termguicolors")
  set termguicolors
 endif
 
 """" enable the theme
 syntax enable
-colorscheme shades_of_purple
-let g:shades_of_purple_airline = 1
-let g:airline_theme='random'
+colorscheme vim-hardaway
+" Assign variable as fallback if needed:
+let g:colors_name = 'vim-hardaway'
+let g:airline_theme = 'vim_hardaway'
+
+" colorscheme vim-framer-syntax
+" let g:lightline = {
+"       \ 'colorscheme': 'framer',
+"       \ }
+
+
+" colorscheme shades_of_purple
+" let g:shades_of_purple_airline = 1
+" let g:airline_theme='random'
 " let g:shades_of_purple_lightline = 1
 " let g:lightline = { "colorscheme": "shades_of_purple" }
 
