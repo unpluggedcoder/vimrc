@@ -307,13 +307,13 @@ endif
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+" map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+" map <leader>sn ]s
+" map <leader>sp [s
+" map <leader>sa zg
+" map <leader>s? z=
 
 " Use the "black hole register", "_ to really delete something
 nnoremap <leader>d "_d
@@ -417,6 +417,8 @@ else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'majutsushi/tagbar'
+    Plug 'easymotion/vim-easymotion'
 endif
 call plug#end()
 
@@ -536,3 +538,23 @@ endif
 " nnoremap <C-e> <End>
 " inoremap <C-a> <Home>
 " inoremap <C-e> <End>
+
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" Easymotion
+let g:EasyMotion_smartcase = 1
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>W <Plug>(easymotion-bd-w)
+nmap <Leader>W <Plug>(easymotion-overwin-w)
