@@ -402,11 +402,16 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'evturn/vim-hardaway'
     " Plug 'drewtempelmeyer/palenight.vim'
 
+    " Rust
     Plug 'rust-lang/rust.vim'
+    Plug 'rust-lang/rls'
+    Plug 'racer-rust/vim-racer'
+    Plug 'rhysd/rust-doc.vim'
+    Plug 'w0rp/ale'
+
     Plug 'airblade/vim-gitgutter'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'luochen1990/rainbow'
-    Plug 'w0rp/ale'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'rhysd/vim-clang-format'
     Plug 'Yggdroot/LeaderF'
@@ -542,6 +547,7 @@ endif
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
+""""""""""""""""""""""""""""""
 " Easymotion
 let g:EasyMotion_smartcase = 1
 " <Leader>f{char} to move to {char}
@@ -558,3 +564,25 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>W <Plug>(easymotion-bd-w)
 nmap <Leader>W <Plug>(easymotion-overwin-w)
+
+""""""""""""""""""""""""""""""
+" Rust
+" racer
+let g:racer_cmd = "/Users/bin/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+augroup END
+
+" rustfmt
+autocmd FileType rust nmap <buffer><Leader>cf :RustFmt<CR>
+
+" rust doc
+let g:rust_doc#define_map_K = 1
