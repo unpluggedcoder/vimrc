@@ -393,6 +393,7 @@ endfunction
 
 call plug#begin(('$HOME/.vim/plugged'))
     Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/syntastic'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     " Color scheme
@@ -407,6 +408,7 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'rust-lang/rls'
     Plug 'racer-rust/vim-racer'
     Plug 'rhysd/rust-doc.vim'
+    Plug 'wagnerf42/vim-clippy'
     Plug 'w0rp/ale'
 
     Plug 'airblade/vim-gitgutter'
@@ -586,3 +588,16 @@ autocmd FileType rust nmap <buffer><Leader>cf :RustFmt<CR>
 
 " rust doc
 let g:rust_doc#define_map_K = 1
+
+" Clippy
+let g:syntastic_rust_checkers = ['clippy']
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
