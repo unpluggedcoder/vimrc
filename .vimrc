@@ -393,7 +393,6 @@ endfunction
 
 call plug#begin(('$HOME/.vim/plugged'))
     Plug 'scrooloose/nerdtree'
-    Plug 'scrooloose/syntastic'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     " Color scheme
@@ -429,15 +428,18 @@ else
 endif
 call plug#end()
 
+""""""""""""""""""""""""""""""
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
+""""""""""""""""""""""""""""""
 " Bracket rainbow
 let g:rainbow_active = 1
 let g:rainbow_conf = {
 \    'guifgs': ['cyan1', 'orange1', 'yellow1', 'magenta1'],
 \}
 
+""""""""""""""""""""""""""""""
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
@@ -479,10 +481,17 @@ let g:airline_theme = 'vim_hardaway'
 " colorscheme palenight
 " let g:airline_theme = "palenight"
 
+""""""""""""""""""""""""""""""
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
+""""""""""""""""""""""""""""""
+" autocmd vimenter * NERDTree
+map <F2> :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""""""""
+" tags
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.vscode', '.git', '.root', 'abtor.xml']
 
@@ -499,12 +508,10 @@ let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 " setlocal tags+=...
 
-" autocmd vimenter * NERDTree
-map <F2> :NERDTreeToggle<CR>
-
 " ctags
 set tags=./.tags;,.tags
 
+""""""""""""""""""""""""""""""
 " LeaderF
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_ShortcutB = '<m-n>'
@@ -533,6 +540,7 @@ noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"
 " search word under cursor literally only in current buffer
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
 
+""""""""""""""""""""""""""""""
 " tmux
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
@@ -546,6 +554,7 @@ endif
 " inoremap <C-a> <Home>
 " inoremap <C-e> <End>
 
+""""""""""""""""""""""""""""""
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
@@ -569,6 +578,16 @@ nmap <Leader>W <Plug>(easymotion-overwin-w)
 
 """"""""""""""""""""""""""""""
 " Rust
+" ale
+let g:ale_rust_cargo_use_clippy = 1
+let g:ale_rust_cargo_default_feature_behavior = "none"
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rls_config = {
+\   'rust': {
+\     'clippy_preference': 'on'
+\   }
+\ }
+
 " racer
 let g:racer_cmd = "/Users/bin/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
@@ -589,15 +608,7 @@ autocmd FileType rust nmap <buffer><Leader>cf :RustFmt<CR>
 " rust doc
 let g:rust_doc#define_map_K = 1
 
-" Clippy
-let g:syntastic_rust_checkers = ['clippy']
+""""""""""""""""""""""""""""""
+" gitgutter
+let g:gitgutter_max_signs=9999
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
