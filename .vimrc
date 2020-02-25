@@ -529,6 +529,8 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+let g:Lf_UseCache = 0
+let g:Lf_UseMemoryCache = 0
 
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -611,4 +613,3 @@ let g:rust_doc#define_map_K = 1
 """"""""""""""""""""""""""""""
 " gitgutter
 let g:gitgutter_max_signs=9999
-
