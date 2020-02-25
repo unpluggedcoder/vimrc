@@ -589,7 +589,7 @@ let g:ale_rust_rls_config = {
 \ }
 
 " racer
-let g:racer_cmd = "/Users/bin/.cargo/bin/racer"
+let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:racer_insert_paren = 1
 
