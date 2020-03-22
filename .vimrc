@@ -234,7 +234,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+map <leader>t<leader> :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -417,6 +417,7 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'rhysd/vim-clang-format'
     Plug 'Yggdroot/LeaderF'
     Plug 'jremmen/vim-ripgrep'
+
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -510,7 +511,6 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " ctags
 set tags=./.tags;,.tags
-
 """"""""""""""""""""""""""""""
 " LeaderF
 let g:Lf_ShortcutF = '<c-p>'
