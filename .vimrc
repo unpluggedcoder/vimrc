@@ -581,6 +581,7 @@ nmap <Leader>W <Plug>(easymotion-overwin-w)
 """"""""""""""""""""""""""""""
 " Rust
 " ale
+let g:rustfmt_autosave = 1
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_rust_cargo_default_feature_behavior = "none"
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
