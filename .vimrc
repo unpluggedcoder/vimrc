@@ -424,9 +424,9 @@ else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
+endif
     Plug 'majutsushi/tagbar'
     Plug 'easymotion/vim-easymotion'
-endif
 call plug#end()
 
 """"""""""""""""""""""""""""""
