@@ -658,4 +658,6 @@ let g:rust_doc#define_map_K = 1
 """"""""""""""""""""""""""""""
 " gitgutter
 let g:gitgutter_max_signs=9999
+let g:gitgutter_set_sign_backgrounds = 1
+highlight clear SignColumn
 
