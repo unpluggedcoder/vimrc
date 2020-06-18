@@ -234,7 +234,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-map <leader>t<leader> :tabnext<cr>
+map <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -417,16 +417,16 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'rhysd/vim-clang-format'
     Plug 'Yggdroot/LeaderF'
     Plug 'jremmen/vim-ripgrep'
-
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
-endif
     Plug 'majutsushi/tagbar'
     Plug 'easymotion/vim-easymotion'
+endif
 call plug#end()
 
 """"""""""""""""""""""""""""""
@@ -472,7 +472,6 @@ let g:airline_theme = 'vim_hardaway'
 "       \ 'colorscheme': 'framer',
 "       \ }
 
-
 " colorscheme shades_of_purple
 " let g:shades_of_purple_airline = 1
 " let g:airline_theme='random'
@@ -502,6 +501,50 @@ let g:gutentags_ctags_tagfile = '.tags'
 " 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
 
 " 配置 ctags 的参数
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
@@ -511,10 +554,14 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 " ctags
 set tags=./.tags;,.tags
+
 """"""""""""""""""""""""""""""
 " LeaderF
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 let g:Lf_ShortcutF = '<c-p>'
-let g:Lf_ShortcutB = '<m-n>'
+let g:Lf_ShortcutB = '<c-t>'
 noremap <Leader>r :LeaderfMru<cr>
 noremap <c-n> :LeaderfFunction!<cr>
 " noremap <m-n> :LeaderfBuffer<cr>
@@ -529,8 +576,6 @@ let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
-let g:Lf_UseCache = 0
-let g:Lf_UseMemoryCache = 0
 
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -581,7 +626,6 @@ nmap <Leader>W <Plug>(easymotion-overwin-w)
 """"""""""""""""""""""""""""""
 " Rust
 " ale
-let g:rustfmt_autosave = 1
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_rust_cargo_default_feature_behavior = "none"
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
@@ -614,3 +658,4 @@ let g:rust_doc#define_map_K = 1
 """"""""""""""""""""""""""""""
 " gitgutter
 let g:gitgutter_max_signs=9999
+
