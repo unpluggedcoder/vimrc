@@ -410,6 +410,7 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'wagnerf42/vim-clippy'
     Plug 'w0rp/ale'
 
+    Plug 'christoomey/vim-tmux-navigator'
     Plug 'airblade/vim-gitgutter'
     Plug 'ludovicchabant/vim-gutentags'
     Plug 'luochen1990/rainbow'
