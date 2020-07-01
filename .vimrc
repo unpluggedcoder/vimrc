@@ -321,6 +321,11 @@ xnoremap <leader>d "_d
 " Paste something and keep it available for further pasting.
 xnoremap <leader>p "_dP
 
+" Use system's clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -640,7 +645,7 @@ let g:ale_rust_rls_config = {
 
 " racer
 let g:racer_cmd = "~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
+let g:racer_experimental_completer = 0
 let g:racer_insert_paren = 1
 
 augroup Racer
