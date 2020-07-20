@@ -642,11 +642,12 @@ let g:ale_rust_rls_config = {
 \     'clippy_preference': 'on'
 \   }
 \ }
+let g:ale_linters = {'rust': ['analyzer']}
 
 " racer
 let g:racer_cmd = "~/.cargo/bin/racer"
-let g:racer_experimental_completer = 0
-let g:racer_insert_paren = 1
+" let g:racer_experimental_completer = 0
+" let g:racer_insert_paren = 1
 
 augroup Racer
     autocmd!
