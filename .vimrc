@@ -410,7 +410,7 @@ call plug#begin(('$HOME/.vim/plugged'))
     " Rust
     Plug 'rust-lang/rust.vim'
     Plug 'rust-lang/rls'
-    " Plug 'racer-rust/vim-racer'
+    Plug 'racer-rust/vim-racer'
     Plug 'rhysd/rust-doc.vim'
     Plug 'wagnerf42/vim-clippy'
     Plug 'w0rp/ale'
@@ -645,18 +645,18 @@ let g:ale_rust_rls_config = {
 let g:ale_linters = {'rust': ['analyzer']}
 
 " racer
-" let g:racer_cmd = "~/.cargo/bin/racer"
-" let g:racer_experimental_completer = 0
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 0
 " let g:racer_insert_paren = 1
 
-" augroup Racer
-"     autocmd!
-"     autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
-"     autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
-"     autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
-"     autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
-"     autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
-" augroup END
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+augroup END
 
 " rustfmt
 autocmd FileType rust nmap <buffer><Leader>cf :RustFmt<CR>
