@@ -1,5 +1,18 @@
 # vimrc
 
+Install all vim plugs with `:PlugInstall`.
+
+## Rust
+
+I use [`coc-rls`](https://github.com/neoclide/coc-rls) instead `rust-lang/rls` vim plug, so do the `rust-analyzer`.
+Install Coc extensions with below:
+
+```shell
+:CocInstall coc-rls
+:CocInstall coc-rust-analyzer
+```
+
+You should have `rust-analyzer` binary in your `$PATH`, or just set the executable path for `dense-analysis/ale`.
 
 # tmux
 

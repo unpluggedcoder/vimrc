@@ -26,8 +26,6 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -396,6 +394,9 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+""""""""""""""""""""""""""""""
+" Plugin
+""""""""""""""""""""""""""""""
 call plug#begin(('$HOME/.vim/plugged'))
     Plug 'scrooloose/nerdtree'
     Plug 'vim-airline/vim-airline'
@@ -409,11 +410,9 @@ call plug#begin(('$HOME/.vim/plugged'))
 
     " Rust
     Plug 'rust-lang/rust.vim'
-    Plug 'rust-lang/rls'
     Plug 'racer-rust/vim-racer'
     Plug 'rhysd/rust-doc.vim'
-    Plug 'wagnerf42/vim-clippy'
-    Plug 'w0rp/ale'
+    Plug 'dense-analysis/ale'
 
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'airblade/vim-gitgutter'
@@ -424,20 +423,20 @@ call plug#begin(('$HOME/.vim/plugged'))
     Plug 'Yggdroot/LeaderF'
     Plug 'jremmen/vim-ripgrep'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" endif
     Plug 'majutsushi/tagbar'
     Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 """"""""""""""""""""""""""""""
 " deoplete
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""
 " Bracket rainbow
