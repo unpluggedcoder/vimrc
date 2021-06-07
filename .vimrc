@@ -442,7 +442,7 @@ call plug#end()
 " Bracket rainbow
 let g:rainbow_active = 1
 let g:rainbow_conf = {
-\    'guifgs': ['cyan1', 'orange1', 'yellow1', 'magenta1'],
+\    'guifgs': ['royalblue3', 'darkorange1', 'firebrick', 'magenta1'],
 \}
 
 """"""""""""""""""""""""""""""
@@ -467,10 +467,18 @@ endif
 
 """" enable the theme
 syntax enable
-colorscheme vim-hardaway
+
+" colorscheme toast
+set background=light
+colorscheme toast
+" augroup toast
+"   autocmd colorscheme toast hi clear Constant | hi link Constant Type
+" augroup END
+
+" colorscheme vim-hardaway
 " Assign variable as fallback if needed:
-let g:colors_name = 'vim-hardaway'
-let g:airline_theme = 'vim_hardaway'
+" let g:colors_name = 'vim-hardaway'
+" let g:airline_theme = 'vim_hardaway'
 
 " colorscheme vim-framer-syntax
 " let g:lightline = {
@@ -488,6 +496,7 @@ let g:airline_theme = 'vim_hardaway'
 
 """"""""""""""""""""""""""""""
 " airline
+let g:airline_theme = "papercolor"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -574,7 +583,7 @@ noremap <c-n> :LeaderfFunction!<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git', '.vscode', 'abtor.xml']
-let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WorkingDirectoryMode = 'ac'
 let g:Lf_WindowHeight = 0.30
 let g:Lf_CacheDirectory = expand('~/.vim/cache')
 let g:Lf_ShowRelativePath = 0
@@ -583,6 +592,7 @@ let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 let g:Lf_UseCache = 0
 let g:Lf_UseMemoryCache = 0
+let g:Lf_RecurseSubmodules = 1
 
 " search word under cursor, the pattern is treated as regex, and enter normal mode directly
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -593,6 +603,15 @@ noremap <C-G> :<C-U><C-R>=printf("Leaderf! rg --append -e %s ", expand("<cword>"
 
 " search word under cursor literally only in current buffer
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg -F --current-buffer -e %s ", expand("<cword>"))<CR>
+
+" Leaderf + gtags
+let g:Lf_GtagsAutoGenerate = 0
+" let g:Lf_Gtagslabel = 'native-pygments'
+" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 """"""""""""""""""""""""""""""
 " tmux
@@ -669,3 +688,5 @@ let g:gitgutter_max_signs=9999
 let g:gitgutter_set_sign_backgrounds = 1
 highlight clear SignColumn
 
+" Coc
+let g:coc_node_path = '/usr/local/bin/node'
